@@ -626,7 +626,7 @@ If you find this project useful and would like to support its development, you c
 - View my other Projects: https://github.com/DraconicKnights
 - Patreon: https://www.patreon.com/c/DraconicKnight
 
-Every contribution—no matter how small—helps sustain ongoing maintenance, improve features, and cover infrastructure costs.
+Every contribution—no matter how small—helps improve features and bring new ideas.
 
 ---
 
