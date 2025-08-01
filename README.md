@@ -2,7 +2,7 @@
 
 ## 🛡️ Overview
 
-The **Firewall Service** is a robust and extensible .NET 9.0 component designed to:
+The **Firewall Service API** is a robust and extensible .NET 9.0 component designed to:
 
 - 🔍 Monitor and parse system logs in real time
 - 🚫 Enforce dynamic blocking rules (e.g., via iptables)
