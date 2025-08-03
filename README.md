@@ -524,8 +524,13 @@ Use it to run delayed or recurring tasks without blocking the main thread.
 - ScheduleOnce(TimeSpan delay, Func<Task> func) → Guid
 - ScheduleRecurring(TimeSpan dueTime, TimeSpan period, Action action) → Guid
 - ScheduleRecurring(TimeSpan dueTime, TimeSpan period, Func<Task> func) → Guid
+- ScheduleAt(DateTime runAt, Action action) → Guid
+- ScheduleAt(DateTime runAt, Func<Task> func) → Guid
+- Pause(Guid id) → bool
+- Resume(Guid id) → bool
 - Cancel(Guid id) → bool
 - CancelAll()  
+- GetScheduledIds() → IEnumerable<Guid>
 
 ### Schedule Usage Examples
 
@@ -564,11 +569,37 @@ SchedulerService.Cancel(taskId);
 SchedulerService.Cancel(TaskIdRecurrent);
 ```
 
+Want to schedule something for a specific date or set time? This can be don esaily using our ScheduleAt call.
+
+```csharp
+SchedulerService.ScheduleAt(DateTime.Now.AddSeconds(20), () =>
+{
+    Logger.Log($"[Stats] {ip} reached {_counts[ip]} attempts", LogLevel.INFO);
+});
+```
+
 And if you wish to cancel all task simple call this method.
 
 ````csharp
 SchedulerService.CancelAll();
 ````
+
+You also have the ability to retrive all schedules, pause and resume them if required.
+
+```csharp
+var taskScheduled = SchedulerService.ScheduleOnce(TimeSpan.FromSeconds(20), () =>
+{
+    Logger.Log($"[Stats] {ip} reached {_counts[ip]} attempts", LogLevel.INFO);
+});
+
+SchedulerService.Pause(taskScheduled);
+
+SchedulerService.Resume(taskScheduled);
+
+SchedulerService.Cancel(taskScheduled);
+
+var ScheduleTasks = SchedulerService.GetScheduledIds();
+```
 
 ## Plugin Handler
 
