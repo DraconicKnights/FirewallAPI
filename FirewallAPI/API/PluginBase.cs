@@ -57,7 +57,7 @@ public abstract class PluginBase : IPlugin
     /// Provides access to the core event management system for handling firewall-related events.
     /// Used to subscribe, unsubscribe, and publish events within the plugin system.
     /// </summary>
-    protected FirewallEventService FirewallEventService { get; private set; } = null!;
+    protected IFirewallEventService FirewallEventService { get; private set; } = null!;
 
     /// <summary>
     /// Configuration Manager
@@ -81,7 +81,7 @@ public abstract class PluginBase : IPlugin
     /// </summary>
     private IFirewallAPI FirewallAPI { get; set; } = null!;
 
-    internal void Initialize(ILogger logger, FirewallEventService firewallEventService, 
+    internal void Initialize(ILogger logger, IFirewallEventService firewallEventService, 
         IPluginConfigManager config, IPluginHandler handler, IFirewallAPI firewallApi, ISchedulerService schedulerService)
     {
         Logger = logger;

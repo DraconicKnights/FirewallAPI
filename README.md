@@ -419,13 +419,13 @@ public class BlockEvent : EventArgs
 
 ```csharp
 // Subscribe to an event
-FirewallEventService.Instance.Subscribe<BlockEvent>(HandleBlock);
+FirewallEventService.Subscribe<BlockEvent>(HandleBlock);
 
 // Unsubscribe from an event
-FirewallEventService.Instance.Unsubscribe<BlockEvent>(HandleBlock);
+FirewallEventService.Unsubscribe<BlockEvent>(HandleBlock);
 
 // Publish -- This will call the event and any subsribers will run this
-FirewallEventService.Instance.Publish(new BlockEvent("8.8.8.8", 3600));
+FirewallEventService.Publish(new BlockEvent("8.8.8.8", 3600));
 
 private void HandleBLockEvent(BlockEvent obj)
 {
